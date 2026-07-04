@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #ffffff;
+  --off: #f5f5f7;
+  --off2: #e8e8ed;
+  --black: #1d1d1f;
+  --mid: #6e6e73;
+  --light: #aeaeb2;
+  --blue: #0071e3;
+  --blue-h: #0077ed;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reusable layout */
+.section-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 100px 4%;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--mid);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.big-heading {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+.subtext {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--off2);
+}
+
+/* Pill buttons */
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 980px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+}
+
+.pill-filled {
+  background: var(--blue);
+  color: #fff;
+}
+
+.pill-filled:hover {
+  background: var(--blue-h);
+  transform: scale(1.02);
+}
+
+.pill-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid rgba(0, 113, 227, 0.35);
+}
+
+.pill-outline:hover {
+  background: rgba(0, 113, 227, 0.06);
+}
+
+/* Fade-up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
