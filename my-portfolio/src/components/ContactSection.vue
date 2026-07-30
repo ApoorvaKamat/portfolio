@@ -6,17 +6,17 @@
         Open to new roles, interesting projects, and good conversations.
         Drop me a line.
       </p>
-      <a href="mailto:hello@yourname.com" class="pill-btn pill-filled contact-cta">
+      <a :href="`mailto:${email}`" class="pill-btn pill-filled contact-cta">
         Get in touch
       </a>
       <div class="contact-links">
-        <a href="mailto:hello@yourname.com" class="contact-link">hello@yourname.com</a>
-        <a href="https://github.com/yourname" target="_blank" class="contact-link">github.com/yourname</a>
-        <a href="https://linkedin.com/in/yourname" target="_blank" class="contact-link">linkedin.com/in/yourname</a>
+        <a :href="`mailto:${email}`" class="contact-link">{{ email }}</a>
+        <a :href="github" target="_blank" class="contact-link">github.com/{{ github.split('/').pop() }}</a>
+        <a :href="linkedin" target="_blank" class="contact-link">linkedin.com/in/{{ linkedin.split('/').pop() }}</a>
       </div>
     </div>
     <footer>
-      <span>Alex Morgan</span>
+      <span>Apoorva Kamat</span>
       <span>© {{ year }}</span>
     </footer>
   </section>
@@ -27,6 +27,9 @@ import { useFadeUp } from '../composables/useFadeUp'
 
 const vAnimate = useFadeUp()
 const year = new Date().getFullYear()
+const email = 'apoorvakamat885@gmail.com';
+const github = 'https://github.com/ApoorvaKamat';
+const linkedin = 'https://www.linkedin.com/in/apoorva-anil-kamat'
 </script>
 
 <style scoped>

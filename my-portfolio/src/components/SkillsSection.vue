@@ -31,47 +31,93 @@ const vAnimate = useFadeUp()
 
 const categories = [
   {
-    label: 'Frontend',
+    label: 'Languages',
     skills: [
-      { name: 'Vue.js' },
+      { name: 'TypeScript' },
       { name: 'JavaScript' },
-      { name: 'React' },
-      { name: 'HTML / CSS' },
-      { name: 'Storybook', secondary: true },
-      { name: 'Vitest / Jest', secondary: true },
-    ],
-  },
-  {
-    label: 'Backend',
-    skills: [
       { name: 'Java' },
-      { name: 'Spring Boot' },
-      { name: 'REST APIs' },
+      { name: 'C#' },
       { name: 'Python' },
-      { name: 'Flask', secondary: true },
-      { name: 'WebSockets', secondary: true },
+      { name: 'HTML' },
+      { name: 'CSS' },
     ],
   },
   {
-    label: 'Database',
+    label: 'Frameworks',
     skills: [
-      { name: 'SQL' },
-      { name: 'PostgreSQL' },
-      { name: 'Schema design' },
-      { name: 'Query tuning' },
-      { name: 'Migrations', secondary: true },
-      { name: 'Indexing', secondary: true },
+      { name: 'Vue.js (v2/v3)' },
+      { name: 'React' },
+      { name: 'Angular' },
+      { name: 'Node.js' },
+      { name: 'Java Spring' },
+      { name: '.NET Core' },
     ],
   },
   {
-    label: 'Tooling',
+    label: 'Backend & APIs',
     skills: [
-      { name: 'Git / GitHub' },
-      { name: 'CI / CD' },
+      { name: 'REST APIs' },
+      { name: 'GraphQL' },
+      { name: 'Microservices' },
+      { name: 'RabbitMQ' },
+    ],
+  },
+  {
+    label: 'Cloud & DevOps',
+    skills: [
+      { name: 'AWS (Certified, EKS, S3, CloudWatch)' },
+      { name: 'Azure' },
       { name: 'Docker' },
-      { name: 'Agile / Scrum' },
-      { name: 'Code review', secondary: true },
-      { name: 'Mentoring', secondary: true },
+      { name: 'Jenkins' },
+      { name: 'CI/CD' },
+      { name: 'Git' },
+      { name: 'GitHub' },
+      { name: 'Google Cloud' },
+    ],
+  },
+  {
+    label: 'Databases',
+    skills: [
+      { name: 'MS SQL Server' },
+      { name: 'MySQL' },
+      { name: 'MongoDB' },
+      { name: 'PL/SQL' },
+    ],
+  },
+  {
+    label: 'Testing',
+    skills: [
+      { name: 'Cypress' },
+      { name: 'Selenium WebDriver' },
+      { name: 'Mocha' },
+      { name: 'Sinon' },
+      { name: 'Playwright' },
+      { name: 'Jest' },
+    ],
+  },
+  {
+    label: 'Tools',
+    skills: [
+      { name: 'Apigee' },
+      { name: 'Apigee X' },
+      { name: 'Postman' },
+      { name: 'Swagger' },
+      { name: 'Figma' },
+    ],
+  },
+  {
+    label: 'Analytics',
+    skills: [
+      { name: 'Adobe (Customer Journey Analytics)' },
+      { name: 'Datadog' },
+    ],
+  },
+  {
+    label: 'Practices',
+    skills: [
+      { name: 'Agile/Scrum' },
+      { name: 'Distributed Systems' },
+      { name: 'System Design' },
     ],
   },
 ]
@@ -84,7 +130,7 @@ const categories = [
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1px;
   background: var(--off2);
   border: 1px solid var(--off2);

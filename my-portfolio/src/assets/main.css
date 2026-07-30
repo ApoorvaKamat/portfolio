@@ -36,7 +36,7 @@ a {
 
 /* Reusable layout */
 .section-inner {
-  max-width: 980px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 100px 4%;
 }

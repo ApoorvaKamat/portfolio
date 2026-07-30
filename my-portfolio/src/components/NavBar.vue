@@ -1,13 +1,13 @@
 <template>
   <nav :class="{ scrolled: isScrolled }">
-    <div class="nav-logo">AK</div>
+    <a href="#" class="nav-logo">AK</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Work</a></li>
       <li><a href="#experience">Experience</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get in touch →</a>
+    <a href="#contact" class="nav-cta">Get in touch</a>
   </nav>
 </template>
 
@@ -26,42 +26,44 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 <style scoped>
 nav {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   padding: 0 4%;
-  height: 48px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.25s ease, background 0.25s ease;
 }
 
 nav.scrolled {
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.97);
 }
 
 .nav-logo {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--black);
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   color: var(--mid);
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
@@ -69,10 +71,10 @@ nav.scrolled {
 }
 
 .nav-cta {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--blue);
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
 .nav-cta:hover {
@@ -82,6 +84,10 @@ nav.scrolled {
 @media (max-width: 600px) {
   .nav-links {
     display: none;
+  }
+
+  nav {
+    padding: 0 5%;
   }
 }
 </style>

@@ -3,33 +3,58 @@
     <p class="section-label fade-up" v-animate>Projects</p>
     <h2 class="big-heading fade-up" v-animate>Work I'm proud of.</h2>
     <div class="projects-grid fade-up" v-animate>
-      <div
+      <component
+        :is="project.link && !project.video ? 'a' : 'div'"
         v-for="project in projects"
         :key="project.id"
+        :href="project.link && !project.video ? project.link : null"
+        :target="project.link && !project.video ? '_blank' : null"
+        :rel="project.link && !project.video ? 'noopener' : null"
         :class="['proj-card', { featured: project.featured }]"
       >
         <template v-if="project.featured">
           <div class="proj-content">
-            <div class="proj-num">{{ project.id }} — Featured</div>
+            <!-- <div class="proj-num">{{ project.id }} — Featured</div> -->
             <h3 class="proj-title">{{ project.title }}</h3>
             <p class="proj-desc">{{ project.desc }}</p>
             <div class="proj-tags">
               <span v-for="tag in project.tags" :key="tag" class="proj-tag">{{ tag }}</span>
             </div>
+            <a
+              v-if="project.link && project.video"
+              :href="project.link"
+              target="_blank"
+              rel="noopener"
+              class="proj-repo-link"
+            >
+              View on GitHub ↗
+            </a>
           </div>
-          <div class="proj-visual">
-            <div class="proj-visual-inner">{ }</div>
+          <div class="proj-visual" :class="{ 'has-video': project.video }">
+            <iframe
+              v-if="project.video"
+              class="proj-video"
+              :src="`https://www.youtube.com/embed/${project.video}`"
+              title="Project demo video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            <div v-else class="proj-visual-inner">
+              <span>Case study</span>
+              <strong>Live product experience</strong>
+            </div>
           </div>
         </template>
         <template v-else>
-          <div class="proj-num">{{ project.id }}</div>
+          <!-- <div class="proj-num">{{ project.id }}</div> -->
           <h3 class="proj-title">{{ project.title }}</h3>
           <p class="proj-desc">{{ project.desc }}</p>
           <div class="proj-tags">
             <span v-for="tag in project.tags" :key="tag" class="proj-tag">{{ tag }}</span>
           </div>
         </template>
-      </div>
+      </component>
     </div>
   </section>
 </template>
@@ -43,30 +68,35 @@ const projects = [
   {
     id: '01',
     featured: true,
-    title: 'Internal Analytics Dashboard',
-    desc: 'A real-time data platform built with Vue 3 Composition API. Live charts, role-based access, Java REST backend, and a PostgreSQL schema designed from scratch.',
-    tags: ['Vue 3', 'Java', 'PostgreSQL', 'REST'],
+    title: 'One Stop Portal',
+    desc: 'A centralized productivity portal built with a 4-person team — a task dashboard synced with JIRA, a searchable project help and discussion forum, and integrated expert chat with meeting scheduling. Deployed live with a full demo walkthrough.',
+    tags: ['React', 'JavaScript', 'Team Project'],
+    link: 'https://github.com/ApoorvaKamat/React-one-stop-portal-app',
+    video: '59-LhhL0ekc',
   },
   {
     id: '02',
     featured: false,
-    title: 'ETL Pipeline Automation',
-    desc: 'Python-powered ETL jobs that pull from multiple database sources, transform records, and load into a normalized schema — fully automated and scheduled.',
-    tags: ['Python', 'SQL', 'Automation'],
+    title: 'Library Management System',
+    desc: 'A desktop library management system built with Python and a MySQL backend, using stored procedures for all data access and a polished ttkthemes-based GUI.',
+    tags: ['Python', 'MySQL', 'Stored Procedures'],
+    link: 'https://github.com/ApoorvaKamat/LibraryManagementSystem-DatabaseDesignWithMySqlandPython',
   },
   {
     id: '03',
     featured: false,
-    title: 'Shared Vue Component Library',
-    desc: 'Design-token-driven component system with Storybook docs and automated tests. Shipped to multiple internal products and teams.',
-    tags: ['Vue.js', 'Storybook', 'Jest'],
+    title: 'Distributed Mutual Exclusion Algorithms',
+    desc: "Java implementations of two classic distributed systems algorithms — Maekawa's algorithm and Ricart-Agrawala optimized by Roucairol-Carvalho — exploring how nodes coordinate access to shared resources without a central authority.",
+    tags: ['Java', 'Distributed Systems', 'Algorithms'],
+    link: 'https://github.com/ApoorvaKamat/Advanced-Operating-Systems',
   },
   {
     id: '04',
     featured: false,
-    title: 'Full-Stack Task Manager',
-    desc: 'React frontend with Spring Boot backend, WebSocket real-time updates, and a clean database schema for tasks, users, and teams.',
-    tags: ['React', 'Spring Boot', 'WebSockets'],
+    title: 'This Portfolio',
+    desc: 'Vue 3 + Vite build with the Composition API, scroll-triggered animations, and an Apple-inspired aesthetic — designed and built section by section, animation included.',
+    tags: ['Vue 3', 'Vite', 'Composition API'],
+    link: null,
   },
 ]
 </script>
@@ -83,12 +113,22 @@ const projects = [
   background: var(--off);
   border-radius: 18px;
   padding: 2.5rem 2rem;
-  transition: transform 0.3s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   cursor: default;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid transparent;
+}
+
+a.proj-card {
+  cursor: pointer;
 }
 
 .proj-card:hover {
-  transform: scale(1.01);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+  border-color: var(--off2);
 }
 
 .proj-card.featured {
@@ -163,21 +203,57 @@ const projects = [
 }
 
 .proj-visual {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.proj-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.proj-repo-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.proj-repo-link:hover {
+  color: #fff;
 }
 
 .proj-visual-inner {
-  font-size: 3rem;
-  opacity: 0.2;
-  font-weight: 600;
-  letter-spacing: -2px;
-  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+
+.proj-visual-inner span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.7;
+}
+
+.proj-visual-inner strong {
+  font-size: 1.1rem;
+  letter-spacing: -0.3px;
 }
 
 @media (max-width: 680px) {
@@ -188,7 +264,7 @@ const projects = [
     grid-column: auto;
     grid-template-columns: 1fr;
   }
-  .proj-visual {
+  .proj-visual:not(.has-video) {
     display: none;
   }
 }

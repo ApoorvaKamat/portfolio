@@ -7,19 +7,24 @@
     <div class="about-grid fade-up" v-animate>
       <div class="about-body">
         <p>
-          I'm a <strong>Software Engineer II</strong> with a primary focus on
-          <strong>Vue.js</strong> frontend development — crafting interfaces
-          that are fast, clean, and maintainable at scale.
+          I'm a <strong>Software Engineer II</strong> at Lumen Technologies, where I
+          lead frontend architecture across <strong>Vue.js, Angular</strong> and
+          <strong>React</strong>; building production microapps, reusable
+          component systems, and self-service dashboards used by
+          cross-functional engineering teams.
         </p>
         <p>
-          On the backend I work in <strong>Java</strong>, designing REST APIs
-          and handling business logic. I also use <strong>Python</strong> for
-          scripting, automation, and data work.
+          On the backend I work with <strong>Java Spring</strong> and
+          <strong>ASP.NET</strong>, designing REST APIs and the data pipelines
+          that sit behind them. That range came from starting my career at
+          Accenture, working across the full stack on travel and insurance
+          platforms before moving into frontend-focused engineering.
         </p>
         <p>
-          Database design is something I genuinely enjoy — from schema modeling
-          to query optimization. I've also built projects in
-          <strong>React</strong>, giving me fluency across the JS ecosystem.
+          I hold an <strong>M.S. in Computer Engineering</strong> from UT
+          Dallas, and I care as much about the systems behind an interface as
+          the interface itself — performance, test coverage, and the
+          engineers who'll maintain it after me.
         </p>
       </div>
       <div class="about-nums">
@@ -40,10 +45,10 @@ import { useFadeUp } from '../composables/useFadeUp'
 const vAnimate = useFadeUp()
 
 const stats = [
-  { value: '2', suffix: '+', label: 'Years as SWE II' },
-  { value: '5', suffix: '', label: 'Core technologies' },
-  { value: '4', suffix: '', label: 'Shipped projects' },
-  { value: '1', suffix: '', label: 'Stack, full depth' },
+  { value: '6', suffix: '+', label: 'Years in software engineering' },
+  { value: '62', suffix: '%', label: 'Faster page loads, Vue 2→3' },
+  { value: '90', suffix: '%', label: 'Cypress test coverage shipped' },
+  { value: '2', suffix: '', label: 'Companies, one full stack' },
 ]
 </script>
 
@@ -73,7 +78,7 @@ const stats = [
 
 .about-nums {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 2fr;
   gap: 2.5rem;
 }
 
