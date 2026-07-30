@@ -281,7 +281,7 @@ const tiles = [
 
 .nav-tile:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0,0.5);
   border-color: transparent;
 }
 
@@ -310,7 +310,7 @@ const tiles = [
 }
 
 .tile-label {
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.3px;
   color: var(--black);
