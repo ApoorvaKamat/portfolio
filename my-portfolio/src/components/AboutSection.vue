@@ -2,30 +2,20 @@
   <section id="about" class="section-inner">
     <p class="section-label fade-up" v-animate>About me</p>
     <h2 class="big-heading fade-up" v-animate>
-      Engineering end&#8209;to&#8209;end,<br />thinking full&#8209;stack.
+      Engineering end&#8209;to&#8209;end,<br />with a product mindset.
     </h2>
     <div class="about-grid fade-up" v-animate>
       <div class="about-body">
         <p>
-          I'm a <strong>Software Engineer II</strong> at Lumen Technologies, where I
-          lead frontend architecture across <strong>Vue.js, Angular</strong> and
-          <strong>React</strong>; building production microapps, reusable
-          component systems, and self-service dashboards used by
-          cross-functional engineering teams.
+          I’m a <strong>Software Engineer II</strong> building products that need to work well, ship reliably, and stay maintainable over time. At Lumen Technologies, I’ve led frontend architecture across <strong>Vue.js, Angular</strong>, and <strong>React</strong>, creating production microapps, reusable component systems, and operational tools used by engineers across the business.
         </p>
         <p>
-          On the backend I work with <strong>Java Spring</strong> and
-          <strong>ASP.NET</strong>, designing REST APIs and the data pipelines
-          that sit behind them. That range came from starting my career at
-          Accenture, working across the full stack on travel and insurance
-          platforms before moving into frontend-focused engineering.
+          My background spans both client-facing interfaces and backend foundations. I’ve worked with <strong>Java Spring</strong> and <strong>ASP.NET</strong> to design REST APIs and data flows that support real users at scale, and I’m especially interested in the full path from UI design to platform reliability.
         </p>
         <p>
-          I hold an <strong>M.S. in Computer Engineering</strong> from UT
-          Dallas, and I care as much about the systems behind an interface as
-          the interface itself — performance, test coverage, and the
-          engineers who'll maintain it after me.
+          I hold an <strong>M.S. in Computer Engineering</strong> from UT Dallas, and I care deeply about clean systems, thoughtful testing, and building software that is easy for teams to evolve.
         </p>
+        <a href="#contact" class="pill-btn pill-outline about-cta">Let’s connect</a>
       </div>
       <div class="about-nums">
         <div v-for="stat in stats" :key="stat.label" class="num-item">
@@ -100,6 +90,11 @@ const stats = [
   font-size: 0.8rem;
   color: var(--mid);
   font-weight: 300;
+}
+
+.about-cta {
+  width: fit-content;
+  margin-top: 0.25rem;
 }
 
 @media (max-width: 680px) {
