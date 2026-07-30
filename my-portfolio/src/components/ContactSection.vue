@@ -6,9 +6,14 @@
         Open to new roles, interesting projects, and good conversations.
         Drop me a line.
       </p>
-      <a :href="`mailto:${email}`" class="pill-btn pill-filled contact-cta">
-        Get in touch
-      </a>
+      <div class="contact-actions">
+        <a :href="`mailto:${email}`" class="pill-btn pill-filled contact-cta">
+          Get in touch
+        </a>
+        <a :href="resumeUrl" download="Apoorva-Kamat-Resume.pdf" class="pill-btn pill-outline contact-cta contact-cta-secondary">
+          Download CV
+        </a>
+      </div>
       <div class="contact-links">
         <a :href="`mailto:${email}`" class="contact-link">{{ email }}</a>
         <a :href="github" target="_blank" class="contact-link">github.com/{{ github.split('/').pop() }}</a>
@@ -30,6 +35,7 @@ const year = new Date().getFullYear()
 const email = 'apoorvakamat885@gmail.com';
 const github = 'https://github.com/ApoorvaKamat';
 const linkedin = 'https://www.linkedin.com/in/apoorva-anil-kamat'
+const resumeUrl = '/Apoorva_Anil_Kamat_Resume.pdf'
 </script>
 
 <style scoped>
@@ -65,9 +71,23 @@ const linkedin = 'https://www.linkedin.com/in/apoorva-anil-kamat'
   line-height: 1.7;
 }
 
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
 .contact-cta {
   font-size: 0.9rem;
   padding: 14px 28px;
+}
+
+.contact-cta-secondary {
+  background: transparent;
+  border: 1px solid rgba(245, 245, 247, 0.25);
+  color: #f5f5f7;
 }
 
 .contact-links {
@@ -98,5 +118,30 @@ footer {
   font-size: 0.75rem;
   color: var(--light);
   margin-top: 0;
+}
+
+@media (max-width: 560px) {
+  .contact-block {
+    padding: 64px 5%;
+    margin-top: 80px;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-cta {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
 }
 </style>

@@ -9,11 +9,11 @@
     </button>
 
     <ul class="nav-links" :class="{ open: isMenuOpen }">
-      <li><a href="#about" @click="closeMenu">About</a></li>
-      <li><a href="#skills" @click="closeMenu">Skills</a></li>
-      <li><a href="#projects" @click="closeMenu">Work</a></li>
-      <li><a href="#experience" @click="closeMenu">Experience</a></li>
-      <li><a href="#contact" class="nav-cta" @click="closeMenu">Get in touch</a></li>
+      <li><a href="#about" :class="{ active: activeSection === 'about' }" @click="closeMenu">About</a></li>
+      <li><a href="#skills" :class="{ active: activeSection === 'skills' }" @click="closeMenu">Skills</a></li>
+      <li><a href="#projects" :class="{ active: activeSection === 'projects' }" @click="closeMenu">Work</a></li>
+      <li><a href="#experience" :class="{ active: activeSection === 'experience' }" @click="closeMenu">Experience</a></li>
+      <li><a href="#contact" class="nav-cta" :class="{ active: activeSection === 'contact' }" @click="closeMenu">Get in touch</a></li>
     </ul>
   </nav>
 </template>
@@ -23,16 +23,49 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
+const activeSection = ref('')
+
+const updateActiveSection = () => {
+  const sectionOrder = ['about', 'skills', 'projects', 'experience', 'contact']
+  const viewportMid = window.innerHeight * 0.35
+  let currentSection = ''
+
+  for (let index = 0; index < sectionOrder.length; index += 1) {
+    const sectionId = sectionOrder[index]
+    const section = document.getElementById(sectionId)
+
+    if (!section) continue
+
+    const rect = section.getBoundingClientRect()
+    const isInView = rect.top <= viewportMid && rect.bottom >= viewportMid
+
+    if (isInView) {
+      currentSection = sectionId
+      break
+    }
+
+    if (rect.top > viewportMid) {
+      currentSection = sectionId
+      break
+    }
+  }
+
+  activeSection.value = currentSection
+}
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20
+  updateActiveSection()
 }
 
 const closeMenu = () => {
   isMenuOpen.value = false
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll))
+onMounted(() => {
+  updateActiveSection()
+  window.addEventListener('scroll', handleScroll)
+})
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
@@ -100,6 +133,11 @@ nav.scrolled {
 
 .nav-links a:hover {
   color: var(--black);
+}
+
+.nav-links a.active {
+  color: var(--black);
+  font-weight: 600;
 }
 
 .nav-cta {

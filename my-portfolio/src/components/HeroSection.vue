@@ -14,8 +14,23 @@
         <div class="hero-actions reveal-fade" style="animation-delay: 1.75s">
           <a href="#projects" class="pill-btn pill-filled">See my work</a>
           <a href="#contact" class="pill-btn pill-outline">Let's talk</a>
+          <a :href="resumeUrl" class="pill-btn pill-outline" download="Apoorva-Kamat-Resume.pdf">Download CV</a>
         </div>
-        <div class="stack-row reveal-fade" style="animation-delay: 1.85s">
+        <div class="credibility-row reveal-fade" style="animation-delay: 1.9s">
+          <div class="credibility-item">
+            <strong>4+ years</strong>
+            <span>building products</span>
+          </div>
+          <div class="credibility-item">
+            <strong>10+ shipped</strong>
+            <span>web and platform projects</span>
+          </div>
+          <div class="credibility-item">
+            <strong>Full-stack</strong>
+            <span>frontend, backend, cloud</span>
+          </div>
+        </div>
+        <div class="stack-row reveal-fade" style="animation-delay: 2.05s">
           <span v-for="tech in stack" :key="tech" class="stack-pill">{{ tech }}</span>
         </div>
       </div>
@@ -44,6 +59,7 @@
 
 <script setup>
 const stack = ['Vue.js', 'Java', 'Python', 'React', 'SQL', 'REST APIs']
+const resumeUrl = '/Apoorva_Anil_Kamat_Resume.pdf'
 
 const tiles = [
   { label: 'About', desc: 'Who I am, beyond the stack.', href: '#about' },
@@ -182,7 +198,35 @@ const tiles = [
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.credibility-row {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.credibility-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.credibility-item strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.credibility-item span {
+  font-size: 0.72rem;
+  color: var(--mid);
 }
 
 .stack-row {
@@ -295,6 +339,10 @@ const tiles = [
     justify-content: center;
   }
 
+  .credibility-row {
+    justify-content: center;
+  }
+
   .hero-eyebrow {
     justify-content: center;
   }
@@ -330,6 +378,30 @@ const tiles = [
 }
 
 @media (max-width: 560px) {
+  .hero {
+    padding: 7vh 5% 8vh;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions a {
+    justify-content: center;
+    text-align: center;
+    min-height: 44px;
+  }
+
+  .credibility-row {
+    flex-direction: column;
+  }
+
+  .credibility-item {
+    border-radius: 16px;
+    align-items: center;
+  }
+
   .tile-col {
     grid-template-columns: 1fr;
   }
