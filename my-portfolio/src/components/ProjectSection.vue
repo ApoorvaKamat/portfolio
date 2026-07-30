@@ -133,7 +133,7 @@ a.proj-card {
 
 .proj-card.featured {
   grid-column: span 2;
-  background: var(--black);
+  background: var(--ink);
   color: #f5f5f7;
   display: grid;
   grid-template-columns: 1fr 1fr;

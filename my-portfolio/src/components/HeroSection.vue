@@ -18,7 +18,7 @@
         </div>
         <div class="credibility-row reveal-fade" style="animation-delay: 1.9s">
           <div class="credibility-item">
-            <strong>4+ years</strong>
+            <strong>6+ years</strong>
             <span>building products</span>
           </div>
           <div class="credibility-item">
@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-const stack = ['Vue.js', 'Java', 'Python', 'React', 'SQL', 'REST APIs']
+const stack = ['Vue.js', 'Java', 'Python', 'React', 'SQL', 'REST APIs', 'AWS']
 const resumeUrl = '/Apoorva_Anil_Kamat_Resume.pdf'
 
 const tiles = [
@@ -213,9 +213,9 @@ const tiles = [
   flex-direction: column;
   gap: 0.2rem;
   padding: 0.7rem 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-soft);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--card);
 }
 
 .credibility-item strong {
@@ -240,7 +240,7 @@ const tiles = [
   font-weight: 500;
   padding: 5px 14px;
   border-radius: 980px;
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--overlay-soft);
   color: var(--mid);
 }
 
@@ -253,7 +253,7 @@ const tiles = [
 }
 
 .nav-tile {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--off2);
   border-radius: 20px;
   padding: 1.6rem 1.4rem;

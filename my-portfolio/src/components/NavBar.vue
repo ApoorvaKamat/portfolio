@@ -15,12 +15,29 @@
       <li><a href="#experience" :class="{ active: activeSection === 'experience' }" @click="closeMenu">Experience</a></li>
       <li><a href="#contact" class="nav-cta" :class="{ active: activeSection === 'contact' }" @click="closeMenu">Get in touch</a></li>
     </ul>
+
+    <button
+      class="theme-toggle"
+      @click="toggleTheme"
+      :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+    >
+      <svg v-show="theme === 'dark'" viewBox="0 0 24 24" fill="none" width="16" height="16">
+        <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6" />
+        <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+      </svg>
+      <svg v-show="theme !== 'dark'" viewBox="0 0 24 24" fill="none" width="16" height="16">
+        <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span class="theme-toggle-tooltip">{{ theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme' }}</span>
+    </button>
   </nav>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useTheme } from '../composables/useTheme'
 
+const { theme, toggleTheme } = useTheme()
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
 const activeSection = ref('')
@@ -71,10 +88,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 <style scoped>
 nav {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--nav-bg);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid var(--border-soft);
   padding: 0 4%;
   height: 56px;
   display: grid;
@@ -88,7 +105,7 @@ nav {
 
 nav.scrolled {
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
-  background: rgba(255, 255, 255, 0.97);
+  background: var(--nav-bg-scrolled);
 }
 
 .nav-logo {
@@ -151,6 +168,50 @@ nav.scrolled {
   color: var(--blue-h);
 }
 
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--mid);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  justify-self: end;
+}
+
+.theme-toggle:hover {
+  color: var(--black);
+  border-color: var(--off2);
+}
+
+.theme-toggle-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #f5f5f7;
+  background: var(--ink);
+  padding: 5px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.theme-toggle:hover .theme-toggle-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (max-width: 600px) {
   .menu-toggle {
     display: inline-flex;
@@ -166,8 +227,8 @@ nav.scrolled {
     align-items: flex-start;
     padding: 1rem 5%;
     gap: 1rem;
-    background: rgba(255,255,255,0.98);
-    border-bottom: 1px solid rgba(0,0,0,0.07);
+    background: var(--nav-bg-scrolled);
+    border-bottom: 1px solid var(--border-soft);
   }
 
   .nav-links.open {

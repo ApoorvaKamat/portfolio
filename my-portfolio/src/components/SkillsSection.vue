@@ -146,7 +146,7 @@ const categories = [
 }
 
 .skill-tile:hover {
-  background: #fafafa;
+  background: var(--off);
 }
 
 .skill-tile-label {

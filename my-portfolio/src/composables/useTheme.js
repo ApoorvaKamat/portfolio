@@ -1,0 +1,17 @@
+import { ref } from 'vue'
+
+const theme = ref(document.documentElement.getAttribute('data-theme') || 'light')
+
+function applyTheme(value) {
+  theme.value = value
+  document.documentElement.setAttribute('data-theme', value)
+  localStorage.setItem('theme', value)
+}
+
+function toggleTheme() {
+  applyTheme(theme.value === 'dark' ? 'light' : 'dark')
+}
+
+export function useTheme() {
+  return { theme, toggleTheme }
+}

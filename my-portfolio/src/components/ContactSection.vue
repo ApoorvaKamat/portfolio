@@ -46,7 +46,7 @@ const resumeUrl = '/Apoorva_Anil_Kamat_Resume.pdf'
 }
 
 .contact-block {
-  background: var(--black);
+  background: var(--ink);
   border-radius: 24px;
   padding: 80px 4%;
   text-align: center;

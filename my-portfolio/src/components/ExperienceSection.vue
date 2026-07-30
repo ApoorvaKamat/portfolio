@@ -50,7 +50,7 @@ const experience = [
   {
     period: 'Feb 2017 — Jun 2017',
     company: 'Imedrix',
-    role: 'Engineering Intern',
+    role: 'Machine Learning Intern',
     desc: 'Implemented a K-means machine learning algorithm to classify 12 cardiac arrhythmias for a handheld ECG device, achieving 70% classification accuracy — an early hands-on application of ML to real-world medical data. Managed project timelines and task delegation, leading the team to a 95% on-time completion rate.',
     tech: ['Python', 'Machine Learning', 'Data Classification'],
   },
@@ -118,7 +118,7 @@ const experience = [
   border-radius: 980px;
   border: 1px solid var(--off2);
   color: var(--mid);
-  background: rgba(255,255,255,0.6);
+  background: var(--card);
 }
 
 @media (max-width: 680px) {
